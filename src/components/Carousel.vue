@@ -163,7 +163,7 @@
       },
       getSets() {
         const self = this;
-        axios.get('http://dev.mcanoy.com/pictureSets')
+        axios.get('http://spring-data-rest-mcanoy.apps.ehealth.rht-labs.com/pictureSets')
         .then((response) => {
           /* eslint-disable no-underscore-dangle */
           console.log(response.data._embedded.pictureSets);
