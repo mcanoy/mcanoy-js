@@ -93,10 +93,10 @@
         <div class="col-md-7">
           <h2 class="featurette-heading">{{ postsList[0].title }} <span class="text-muted"></span></h2>
           <p class="lead">{{ postsList[0].content }} ...</p>
-          <p><a class="btn btn-default" href="#" role="button">Read More &raquo;</a></p>
+          <p><a class="btn btn-default" href="https://blog.openshift.com/7-habits-highly-effective-devops/" role="button">Read More &raquo;</a></p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" :src="contentList[0].thumbnail" alt="First slide">
+          <img class="featurette-image img-responsive center-block" src="https://blog.openshift.com/wp-content/uploads/DevOps-Covey-768x576.png" alt="First slide">
         </div>
       </div>
 
@@ -109,7 +109,7 @@
           <p><a class="btn btn-default" href="#" role="button">Read More &raquo;</a></p>
         </div>
         <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block" :src="contentList[1].thumbnail" alt="First slide">
+          <img class="featurette-image img-responsive center-block" src="https://kubernetes.io/images/favicon.png" alt="First slide">
         </div>
       </div>
 
@@ -122,7 +122,7 @@
           <p><a class="btn btn-default" href="#" role="button">Read More &raquo;</a></p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" :src="contentList[2].thumbnail" alt="First slide">
+          <img class="featurette-image img-responsive center-block" :src="contentList[0].thumbnail" alt="First slide">
         </div>
       </div>
 
