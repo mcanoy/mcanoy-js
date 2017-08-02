@@ -130,13 +130,6 @@
 
       <!-- /END THE FEATURETTES -->
 
-
-      <!-- FOOTER -->
-      <footer>
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
-
     </div><!-- /.container -->
     </div>
 </template>
@@ -163,21 +156,21 @@
       },
       getSets() {
         const self = this;
-        axios.get('http://spring-data-rest-mcanoy.apps.ehealth.rht-labs.com/pictureSets')
+        axios.get('http://spring-data-rest-mcanoy.apps.ehealth.rht-labs.com/pictureSets?size=3')
         .then((response) => {
           self.contentList = response.data.content;
         });
       },
       getPlaces() {
         const self = this;
-        axios.get('http://mcanoy-test-mcanoy.apps.ehealth.rht-labs.com/rest/places?size=3')
+        axios.get('http://spring-data-rest-mcanoy.apps.ehealth.rht-labs.com/places?size=3')
         .then((response) => {
           self.placesList = response.data;
         });
       },
       getBlogPosts() {
         const self = this;
-        axios.get('http://mcanoy-test-mcanoy.apps.ehealth.rht-labs.com/rest/blogs?size=3')
+        axios.get('http://spring-data-rest-mcanoy.apps.ehealth.rht-labs.com/blogs?size=3')
         .then((response) => {
           self.postsList = response.data;
         });
