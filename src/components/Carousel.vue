@@ -165,7 +165,7 @@
         const self = this;
         axios.get('http://spring-data-rest-mcanoy.apps.ehealth.rht-labs.com/places?size=3')
         .then((response) => {
-          self.placesList = response.data;
+          self.placesList = response.data.content;
         });
       },
       getBlogPosts() {
