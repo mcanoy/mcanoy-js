@@ -12,13 +12,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">McAnoy.com</a>
+              <a class="navbar-brand" href="#">CalDOJ.gov.ca</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><router-link v-bind:to="'/'">Home</router-link></li>
                 <li><router-link v-bind:to="'/about'">About</router-link></li>
-                <li><router-link v-bind:to="'/carousel'">Carousel</router-link></li>
+                <li><router-link v-bind:to="'/carousel'">Demo</router-link></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu">
