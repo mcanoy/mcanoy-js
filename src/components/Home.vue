@@ -170,9 +170,9 @@
       },
       getBlogPosts() {
         const self = this;
-        axios.get('http://spring-data-rest-mcanoy.apps.ehealth.rht-labs.com/blogs?sort=id,desc&size=3')
+        axios.get('http://spring-data-rest-mcanoy.apps.ehealth.rht-labs.com/blogs')
         .then((response) => {
-          self.postsList = response.data.content;
+          self.postsList = response.data;
         });
       },
     },
