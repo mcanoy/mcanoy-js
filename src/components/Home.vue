@@ -156,21 +156,22 @@
       },
       getSets() {
         const self = this;
-        axios.get('http://doj-api.apps.ehealth.rht-labs.com/pictureSets?sort=id,desc&size=3')
+        axios.get(`${process.env.API_URL}/pictureSets?sort=id,desc&size=3`)
         .then((response) => {
           self.contentList = response.data.content;
         });
       },
       getPlaces() {
         const self = this;
-        axios.get('http://doj-api.apps.ehealth.rht-labs.com/places?sort=id,desc&size=3')
+        console.log(process.env);
+        axios.get(`${process.env.API_URL}/places?sort=id,desc&size=3`)
         .then((response) => {
           self.placesList = response.data.content;
         });
       },
       getBlogPosts() {
         const self = this;
-        axios.get('http://doj-api.apps.ehealth.rht-labs.com/blogs')
+        axios.get(`${process.env.API_URL}/blogs`)
         .then((response) => {
           self.postsList = response.data;
         });
