@@ -12,19 +12,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">CalDOJ.gov.ca</a>
+              <a class="navbar-brand" href="/">McAnoy.com</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><router-link v-bind:to="'/'">Home</router-link></li>
-                <li><router-link v-bind:to="'/about'">About</router-link></li>
-                <li><router-link v-bind:to="'/carousel'">Demo</router-link></li>
+                <li><router-link v-bind:to="'/places'">Places</router-link></li>
+                <li><router-link v-bind:to="'/photos'">Photos</router-link></li>
+                <li><router-link v-bind:to="'/test2'">Test 2</router-link></li>
+                <li><router-link v-bind:to="'/test3'">Test 3</router-link></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><router-link v-bind:to="'/todo-list'">Todo List</router-link></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
+                    <li><a href="/test">Test</a></li>
+                    <li><a href="/about">About</a></li>
                     <li role="separator" class="divider"></li>
                     <li class="dropdown-header">Nav header</li>
                     <li><a href="#">Separated link</a></li>
@@ -41,10 +43,6 @@
 
 
     <nav>
-      
-      
-      
-      
       <router-view></router-view>
     </nav>
   </div>
@@ -69,58 +67,55 @@ body {
   color: #5a5a5a;
 }
 
-#mctoplevel {
-  margin: 0;
-  padding: 0;
-  background: #FFFFFF url(assets/css01.jpg) repeat-x;
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
 }
 
-#mcheader {
-    height: 180px;
-    margin: 0 auto;
-    background: url(assets/css02.gif) no-repeat center;
-    background-color: #530100;
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper > .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+.navbar-wrapper .navbar {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.navbar-wrapper .navbar .container {
+  width: auto;
 }
 
-#mcheader h1 a, #header h2 a {
-    text-transform: lowercase;
-    color: #FFFFFF;
-    text-decoration: none;
-}
 
-#mcmenu {
-    width: 760px;
-    height: 50px;
-    margin: 0 auto;
-}
 
-#mcmenu ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
+/* RESPONSIVE CSS
+-------------------------------------------------- */
 
-#mcmenu li {
-    display: inline;
-}
+@media (min-width: 768px) {
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
 
-#mcmenu a {
-    display: block;
-    float: left;
-    padding: 17px 20px 0 20px;
-    background: url(assets/css03.gif) no-repeat;
-    text-transform: uppercase;
-    text-decoration: none;
-    font: bold 12px Arial, Helvetica, sans-serif;
-    color: #D8D8D8;
-}
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
 
-#mcmenu a:hover {
-    color: #FFFFFF;
-}
-
-#mcmenu .first a {
-    background: none;
 }
 
 </style>

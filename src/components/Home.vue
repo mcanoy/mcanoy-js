@@ -65,19 +65,19 @@
       <div class="row">
         <div class="col-lg-4">
 
-          <img class="img-circle" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=11&size=140x140&markers=color:blue%7Clabel:' + firstLetter(placesList[0].name) + '%7C' + placesList[0].latitude + ',' + placesList[0].longitude + '&key=AIzaSyByNjc9-BFj9lLgkoMiO0L0IpJG7dM-Qrc'" width="140" height="140">
+          <img class="img-circle" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=11&size=140x140&markers=color:blue%7Clabel:' + firstLetter(placesList[0].name) + '%7C' + placesList[0].latitude + ',' + placesList[0].longitude + '&key=' + api_key" width="140" height="140">
           <h2>{{ placesList[0].name }}</h2>
           <p>{{ placesList[0].description }}</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=11&size=140x140&markers=color:blue%7Clabel:' + firstLetter(placesList[1].name) + '%7C' + placesList[1].latitude + ',' + placesList[1].longitude + '&key=AIzaSyByNjc9-BFj9lLgkoMiO0L0IpJG7dM-Qrc'" width="140" height="140">
+          <img class="img-circle" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=11&size=140x140&markers=color:blue%7Clabel:' + firstLetter(placesList[1].name) + '%7C' + placesList[1].latitude + ',' + placesList[1].longitude + '&key=' + api_key" width="140" height="140">
           <h2>{{ placesList[1].name }}</h2>
           <p>{{ placesList[1].description }}</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=11&size=140x140&markers=color:blue%7Clabel:' + firstLetter(placesList[2].name) + '%7C' + placesList[2].latitude + ',' + placesList[2].longitude + '&key=AIzaSyByNjc9-BFj9lLgkoMiO0L0IpJG7dM-Qrc'" width="140" height="140">
+          <img class="img-circle" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=11&size=140x140&markers=color:blue%7Clabel:' + firstLetter(placesList[2].name) + '%7C' + placesList[2].latitude + ',' + placesList[2].longitude + '&key=' + api_key" width="140" height="140">
           <h2>{{ placesList[2].name }}</h2>
           <p>{{ placesList[2].description }}</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
@@ -143,6 +143,7 @@
         contentList: [{ name: '', thumbnail: '', description: '' }, { name: '', thumbnail: '', description: '' }, { name: '', thumbnail: '', description: '' }],
         placesList: [{ name: '', description: '', latitude: '', longitude: '' }, { name: '', description: '', latitude: '', longitude: '' }, { name: '', description: '', latitude: '', longitude: '' }],
         postsList: [{ title: '', content: '', url: '' }, { title: '', content: '', url: '' }, { title: '', content: '', url: '' }],
+        api_key: `${process.env.MAP_KEY}`,
       };
     },
     mounted() {
@@ -163,7 +164,6 @@
       },
       getPlaces() {
         const self = this;
-        console.log(process.env);
         axios.get(`${process.env.API_URL}/places?sort=id,desc&size=3`)
         .then((response) => {
           self.placesList = response.data.content;
@@ -182,31 +182,6 @@
 
 <style>
 
-
-/* CUSTOMIZE THE NAVBAR
--------------------------------------------------- */
-
-/* Special class on .container surrounding .navbar, used for positioning it into place. */
-.navbar-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 20;
-}
-
-/* Flip around the padding for proper display in narrow viewports */
-.navbar-wrapper > .container {
-  padding-right: 0;
-  padding-left: 0;
-}
-.navbar-wrapper .navbar {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.navbar-wrapper .navbar .container {
-  width: auto;
-}
 
 
 /* CUSTOMIZE THE CAROUSEL
@@ -276,23 +251,6 @@
 -------------------------------------------------- */
 
 @media (min-width: 768px) {
-  /* Navbar positioning foo */
-  .navbar-wrapper {
-    margin-top: 20px;
-  }
-  .navbar-wrapper .container {
-    padding-right: 15px;
-    padding-left: 15px;
-  }
-  .navbar-wrapper .navbar {
-    padding-right: 0;
-    padding-left: 0;
-  }
-
-  /* The navbar becomes detached from the top, so we round the corners */
-  .navbar-wrapper .navbar {
-    border-radius: 4px;
-  }
 
   /* Bump up size of carousel content */
   .carousel-caption p {

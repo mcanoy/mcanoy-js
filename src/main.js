@@ -2,14 +2,25 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import * as VueGoogleMaps from 'vue2-google-maps';
+
 import App from './App';
 
 import Home from './components/Home';
 import About from './components/About';
 import TodoList from './components/TodoList';
 import Carousel from './components/Carousel';
+import Photos from './components/Photos';
+import Places from './components/Places';
+
 
 Vue.use(VueRouter);
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: `${process.env.MAP_KEY}`,
+//    libraries: 'places', //// If you need to use place input
+  },
+});
 Vue.config.productionTip = false;
 
 const router = new VueRouter({
@@ -19,6 +30,8 @@ const router = new VueRouter({
     { path: '/about', component: About },
     { path: '/todo-list', component: TodoList },
     { path: '/carousel', component: Carousel },
+    { path: '/photos', component: Photos },
+    { path: '/places', component: Places },
   ],
 });
 
