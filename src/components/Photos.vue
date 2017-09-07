@@ -26,7 +26,7 @@
     methods: {
       getPictureSet() {
         const self = this;
-        axios.get(`${process.env.API_URL}/pictures/search/pictureSetId?set=82`)
+        axios.get(`${process.env.API_URL}/pictures/search/name?name=${self.$route.params.name}`)
         .then((response) => {
           self.imageItems = response.data.content;
           self.aspectRatios = [self.imageItems.length];

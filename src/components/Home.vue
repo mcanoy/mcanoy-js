@@ -18,7 +18,7 @@
             <div class="carousel-caption">
               <h1>{{ contentList[0].name }}</h1>
               <p>{{ contentList[0].description }}</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">View Gallery</a></p>
+              <p><router-link :to="'/photos/' + setNamePlus(contentList[0])" role="button" class="btn btn-lg btn-primary">View Gallery</router-link></p>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@
             <div class="carousel-caption">
               <h1>{{ contentList[1].name }}</h1>
               <p>{{ contentList[1].description }}</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">View Gallery</a></p>
+              <p><router-link :to="'/photos/' + setNamePlus(contentList[1])" role="button" class="btn btn-lg btn-primary">View Gallery</router-link></p>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="carousel-caption">
               <h1>{{ contentList[2].name }}</h1>
               <p>{{ contentList[2].description }}</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">View Gallery</a></p>
+              <p><router-link :to="'/photos/' + setNamePlus(contentList[2])" role="button" class="btn btn-lg btn-primary">View Gallery</router-link></p>
             </div>
           </div>
         </div>
@@ -154,6 +154,9 @@
     methods: {
       firstLetter(input) {
         return input.substring(0, 1);
+      },
+      setNamePlus(input) {
+        return input.name.replace(/ /g, '+');
       },
       getSets() {
         const self = this;

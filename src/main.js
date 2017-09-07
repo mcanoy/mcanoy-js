@@ -30,8 +30,8 @@ const router = new VueRouter({
     { path: '/about', component: About },
     { path: '/todo-list', component: TodoList },
     { path: '/carousel', component: Carousel },
-    { path: '/photos', component: Photos },
     { path: '/places', component: Places },
+    { path: '/photos/:name', component: Photos },
   ],
 });
 
