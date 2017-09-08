@@ -6,21 +6,20 @@
 
     <gmap-map style="width: 100%; height: 100%; position: absolute; left:0; top:0"
         :center="{lat: 34.090698, lng: -118.38600}"
-        :zoom="12"
-    >
-      <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" :content="infoContent" @closeclick="infoWinOpen=false"></gmap-info-window>
+        :zoom="12">
+      <gmap-cluster>
+        <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" :content="infoContent" @closeclick="infoWinOpen=false"></gmap-info-window>
 
-      <gmap-marker v-for="(m,i) in markers" :key="m.id" :position="{lat: m.latitude, lng: m.longitude}" :clickable="true" :draggable="false" @click="toggleInfoWindow(m,i)"></gmap-marker>
+        <gmap-marker v-for="(m,i) in markers" :key="m.id" :label="firstLetter(m)" :position="{lat: m.latitude, lng: m.longitude}" :clickable="true" :draggable="false" @click="toggleInfoWindow(m,i)" :icon="getIcon(m)"></gmap-marker>
+      </gmap-cluster>
     </gmap-map>
 
   </div>
 </template>
 
 <script>
-//  import GMap from 'vue2-google-maps';
   import axios from 'axios';
 
-//  const Marker = GMap.Marker();
   export default {
     data() {
       return {
@@ -48,6 +47,13 @@
       this.getPlaces();
     },
     methods: {
+      firstLetter(marker) {
+        return marker.rating === 1 ? '' : marker.name.substring(0, 1);
+      },
+      getIcon(marker) {
+        console.log(marker.rating);
+        return marker.rating === 1 ? '/static/images/black_star.png' : '';
+      },
       getPlaces() {
         const self = this;
         axios.get(`${process.env.API_URL}/places?sort=id,desc&size=500`)

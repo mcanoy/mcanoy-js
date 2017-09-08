@@ -68,19 +68,19 @@
           <img class="img-circle" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=11&size=140x140&markers=color:blue%7Clabel:' + firstLetter(placesList[0].name) + '%7C' + placesList[0].latitude + ',' + placesList[0].longitude + '&key=' + api_key" width="140" height="140">
           <h2>{{ placesList[0].name }}</h2>
           <p>{{ placesList[0].description }}</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><router-link :to="'/places/' + setNamePlus(placesList[0])" role="button" class="btn btn-default">View details &raquo;</router-link></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=11&size=140x140&markers=color:blue%7Clabel:' + firstLetter(placesList[1].name) + '%7C' + placesList[1].latitude + ',' + placesList[1].longitude + '&key=' + api_key" width="140" height="140">
           <h2>{{ placesList[1].name }}</h2>
           <p>{{ placesList[1].description }}</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><router-link :to="'/places/' + setNamePlus(placesList[1])" role="button" class="btn btn-default">View details &raquo;</router-link></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=11&size=140x140&markers=color:blue%7Clabel:' + firstLetter(placesList[2].name) + '%7C' + placesList[2].latitude + ',' + placesList[2].longitude + '&key=' + api_key" width="140" height="140">
           <h2>{{ placesList[2].name }}</h2>
           <p>{{ placesList[2].description }}</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><router-link :to="'/places/' + setNamePlus(placesList[2])" role="button" class="btn btn-default">View details &raquo;</router-link></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 

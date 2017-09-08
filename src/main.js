@@ -31,6 +31,7 @@ const router = new VueRouter({
     { path: '/todo-list', component: TodoList },
     { path: '/carousel', component: Carousel },
     { path: '/places', component: Places },
+    { path: '/places/:id', component: Places },
     { path: '/photos/:name', component: Photos },
   ],
 });
