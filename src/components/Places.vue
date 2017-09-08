@@ -58,10 +58,10 @@
       toggleInfoWindow(marker, idx) {
         const self = this;
         self.infoWindowPos = { lat: marker.latitude, lng: marker.longitude };
-        self.infoContent = `<a href='#' target='_blank'>${marker.name}</a><p>${marker.description}</p>`;
+        const placeName = marker.url === '' ? marker.name : `<a href='${marker.url}' target='_blank'>${marker.name}</a>`;
+        self.infoContent = `${placeName}<p>${marker.description}</p>`;
         self.infoOptions.content = self.infoContent;
 
-        console.log(self.infoContent);
         // check if its the same marker that was selected if yes toggle
         if (self.currentMidx === idx) {
           self.infoWinOpen = !self.infoWinOpen;
