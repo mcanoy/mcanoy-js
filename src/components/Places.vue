@@ -51,7 +51,6 @@
         return marker.rating === 1 ? '' : marker.name.substring(0, 1);
       },
       getIcon(marker) {
-        console.log(marker.rating);
         return marker.rating === 1 ? '/static/images/black_star.png' : '';
       },
       getPlaces() {
@@ -65,7 +64,8 @@
         const self = this;
         self.infoWindowPos = { lat: marker.latitude, lng: marker.longitude };
         const placeName = marker.url === '' ? marker.name : `<a href='${marker.url}' target='_blank'>${marker.name}</a>`;
-        self.infoContent = `${placeName}<p>${marker.description}</p>`;
+        const placeIcon = marker.icon === '' ? '' : `<p><img src='${marker.icon}' style='float:left;padding:3px'/><p>`;
+        self.infoContent = `<p>${placeName}</p>${placeIcon}<p>${marker.description}</p>`;
         self.infoOptions.content = self.infoContent;
 
         // check if its the same marker that was selected if yes toggle
