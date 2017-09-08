@@ -16,9 +16,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><router-link v-bind:to="'/'">Home</router-link></li>
-                <li><router-link v-bind:to="'/places'">Places</router-link></li>
-                <li><router-link v-bind:to="'/photos'">Photos</router-link></li>
+                <li v-bind:class="{ active: activeClass === '/' }"><router-link v-bind:to="'/'" >Home</router-link></li>
+                <li v-bind:class="{ active: activeClass === '/places' }"><router-link v-bind:to="'/places'">Places</router-link></li>
+                <li v-bind:class="{ active: activeClass === '/photos' }"><router-link v-bind:to="'/photos'">Photos</router-link></li>
                 <li><router-link v-bind:to="'/test2'">Test 2</router-link></li>
                 <li><router-link v-bind:to="'/test3'">Test 3</router-link></li>
                 <li class="dropdown">
@@ -51,6 +51,21 @@
 <script>
 export default {
   name: 'app',
+  data() {
+    return {
+      activeClass: '/',
+    };
+  },
+  watch: {
+    $route(to) {
+      const self = this;
+      if (to.path.startsWith('/photos')) {
+        self.activeClass = '/photos';
+      } else {
+        self.activeClass = to.path;
+      }
+    },
+  },
 };
 </script>
 

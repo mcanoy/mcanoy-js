@@ -40,8 +40,6 @@
 
 </script>
 
-</script>
-
 <style>
 .flexbin {
   display: flex;
