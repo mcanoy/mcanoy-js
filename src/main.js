@@ -10,15 +10,17 @@ import Home from './components/Home';
 import About from './components/About';
 import TodoList from './components/TodoList';
 import Carousel from './components/Carousel';
+import PhotoSet from './components/PhotoSet';
 import Photos from './components/Photos';
 import Places from './components/Places';
+import LightboxImage from './components/lightbox/LightboxImage';
 
+Vue.component('lightbox-image', LightboxImage);
 
 Vue.use(VueRouter);
 Vue.use(VueGoogleMaps, {
   load: {
     key: `${process.env.MAP_KEY}`,
-//    libraries: 'places', //// If you need to use place input
   },
 });
 Vue.config.productionTip = false;
@@ -32,7 +34,8 @@ const router = new VueRouter({
     { path: '/carousel', component: Carousel },
     { path: '/places', component: Places },
     { path: '/places/:id', component: Places },
-    { path: '/photos/:name', component: Photos },
+    { path: '/photos/:name', component: PhotoSet },
+    { path: '/photos', component: Photos },
   ],
 });
 

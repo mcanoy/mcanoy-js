@@ -1,10 +1,26 @@
 <template>
-    <div class="flexbin flexbin-margin" >
+    <div >
         
-          
-          <div id="image-container" v-for="image in imageItems">
-                <img :src="image.urlSmall"/>
-        </div>
+<!--
+<waterfall :line-gap="200" :watch="sets">
+  <!-- each component is wrapped by a waterfall slot 
+  <waterfall-slot
+    v-for="(item, index) in sets"
+    :width="310"
+    :height="310"
+    :order="index"
+    :key="item.name"
+  >
+    <a :href="'/photos/' + item.url" rel="external" >
+      <img :src="item.thumbnail" height="310" width="310"/>
+      <h2>{{ item.name }}</h2>
+      <p>{{ item.description }} </p>
+      <p class="ui-li-aside">{{ item.count }} pics</p>
+    </a>
+    
+  </waterfall-slot>
+</waterfall>
+-->
     
     </div>
 </template>
@@ -15,24 +31,18 @@
   export default {
     data() {
       return {
-        imageItems: [
-        ],
-        aspectRatios: [],
+        sets: [],
       };
     },
     mounted() {
-      this.getPictureSet();
+      this.getSets();
     },
     methods: {
-      getPictureSet() {
+      getSets() {
         const self = this;
-        axios.get(`${process.env.API_URL}/pictures/search/name?name=${self.$route.params.name}`)
+        axios.get(`${process.env.API_URL}/pictureSets?sort=sequence&size=300`)
         .then((response) => {
-          self.imageItems = response.data.content;
-          self.aspectRatios = [self.imageItems.length];
-          for (let i = 0; i < self.imageItems.length; i += 1) {
-            self.aspectRatios[i] = self.imageItems[i].ratio;
-          }
+          self.sets = response.data.content;
         });
       },
     },
@@ -40,97 +50,7 @@
 
 </script>
 
-<style>
-.flexbin {
-  display: flex;
-  overflow: hidden;
-  flex-wrap: wrap;
-  margin: -2.5px;
-}
-.flexbin:after {
-  content: '';
-  flex-grow: 999999999;
-  min-width: 180px;
-  height: 0;
-}
-.flexbin > * {
-  position: relative;
-  display: block;
-  height: 180px;
-  margin: 2.5px;
-  flex-grow: 1;
-}
-.flexbin > * > img {
-  height: 180px;
-  object-fit: cover;
-  max-width: 100%;
-  min-width: 100%;
-  vertical-align: bottom;
-}
-.flexbin.flexbin-margin {
-  margin: 2.5px;
-}
-@media (max-width: 980px) {
-  .flexbin {
-    display: flex;
-    overflow: hidden;
-    flex-wrap: wrap;
-    margin: -2.5px;
-  }
-  .flexbin:after {
-    content: '';
-    flex-grow: 999999999;
-    min-width: 150px;
-    height: 0;
-  }
-  .flexbin > * {
-    position: relative;
-    display: block;
-    height: 150px;
-    margin: 2.5px;
-    flex-grow: 1;
-  }
-  .flexbin > * > img {
-    height: 150px;
-    object-fit: cover;
-    max-width: 100%;
-    min-width: 100%;
-    vertical-align: bottom;
-  }
-  .flexbin.flexbin-margin {
-    margin: 2.5px;
-  }
-}
-@media (max-width: 400px) {
-  .flexbin {
-    display: flex;
-    overflow: hidden;
-    flex-wrap: wrap;
-    margin: -2.5px;
-  }
-  .flexbin:after {
-    content: '';
-    flex-grow: 999999999;
-    min-width: 100px;
-    height: 0;
-  }
-  .flexbin > * {
-    position: relative;
-    display: block;
-    height: 100px;
-    margin: 2.5px;
-    flex-grow: 1;
-  }
-  .flexbin > * > img {
-    height: 100px;
-    object-fit: cover;
-    max-width: 100%;
-    min-width: 100%;
-    vertical-align: bottom;
-  }
-  .flexbin.flexbin-margin {
-    margin: 2.5px;
-  }
-}
+<style type="text/css">
+  
 
 </style>
