@@ -9,10 +9,10 @@ import App from './App';
 import Home from './components/Home';
 import About from './components/About';
 import TodoList from './components/TodoList';
-import Carousel from './components/Carousel';
 import PhotoSet from './components/PhotoSet';
 import Photos from './components/Photos';
 import Places from './components/Places';
+import Test from './components/Test';
 import LightboxImage from './components/lightbox/LightboxImage';
 
 Vue.component('lightbox-image', LightboxImage);
@@ -31,11 +31,11 @@ const router = new VueRouter({
     { path: '/', component: Home },
     { path: '/about', component: About },
     { path: '/todo-list', component: TodoList },
-    { path: '/carousel', component: Carousel },
     { path: '/places', component: Places },
     { path: '/places/:id', component: Places },
     { path: '/photos/:name', component: PhotoSet },
     { path: '/photos', component: Photos },
+    { path: '/test', component: Test },
   ],
 });
 
