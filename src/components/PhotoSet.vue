@@ -1,9 +1,15 @@
 <template>
   <div>
-    <div class="flexbin flexbin-margin" >
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1></h1><h1></h1>
+        <h1>{{ setDetails.name }}<small>{{ setDetails.description }}</small></h1>
+        <div class="flexbin flexbin-margin" >
             <a :href="image.urlLarge" v-lightbox v-for="image in imageItems">
               <img :src="image.urlSmall"/>
             </a>
+        </div>
+      </div>
     </div>
     <lightbox></lightbox>
   </div>
@@ -21,26 +27,31 @@
     data() {
       return {
         imageItems: [],
-        aspectRatios: [],
+        setDetails: {},
       };
     },
     mounted() {
-      this.getPictureSet(this.$route.params.name);
+      this.getPictureSetPictures(this.$route.params.name);
+      this.getPictureSetDetails(this.$route.params.name);
     },
     beforeRouteUpdate(to) {
-      this.getPictureSet(to.params.name);
+      this.getPictureSetPictures(to.params.name);
+      this.getPictureSetDetails(to.params.name);
     },
     methods: {
-      getPictureSet(url) {
+      getPictureSetDetails(url) {
+        const self = this;
+        axios.get(`${process.env.API_URL}/pictureSets/search/name?name=${url}`)
+        .then((response) => {
+          self.setDetails = response.data;
+        });
+      },
+      getPictureSetPictures(url) {
         const self = this;
         store.close();
         axios.get(`${process.env.API_URL}/pictures/search/name?name=${url}`)
         .then((response) => {
           self.imageItems = response.data.content;
-          self.aspectRatios = [self.imageItems.length];
-          for (let i = 0; i < self.imageItems.length; i += 1) {
-            self.aspectRatios[i] = self.imageItems[i].ratio;
-          }
         });
       },
     },
@@ -49,6 +60,11 @@
 </script>
 
 <style>
+
+.page-header {
+  color: #530100;
+}
+
 .flexbin {
   display: flex;
   overflow: hidden;
