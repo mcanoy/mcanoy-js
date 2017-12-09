@@ -44,6 +44,15 @@
       };
     },
     mounted() {
+      const self = this;
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+
+          self.infoWindowPos = { lat, lng };
+        });
+      }
       this.getPlaces();
     },
     methods: {
