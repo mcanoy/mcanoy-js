@@ -41,7 +41,7 @@
     methods: {
       getPictureSetDetails(url) {
         const self = this;
-        axios.get(`${process.env.API_URL}/pictureSets/search/name?name=${url}`)
+        axios.get(`${process.env.API_URL}/pictureSets/search/name?name=${url}&status=1`)
         .then((response) => {
           self.setDetails = response.data;
         });
@@ -49,7 +49,7 @@
       getPictureSetPictures(url) {
         const self = this;
         store.close();
-        axios.get(`${process.env.API_URL}/pictures/search/name?name=${url}`)
+        axios.get(`${process.env.API_URL}/pictures/search/name?name=${url}&status=1`)
         .then((response) => {
           self.imageItems = response.data.content;
         });

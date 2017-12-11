@@ -62,7 +62,7 @@
       },
       getSets() {
         const self = this;
-        axios.get(`${process.env.API_URL}/pictureSets?sort=sequence&size=300`)
+        axios.get(`${process.env.API_URL}/pictureSets/search/status?status=1&sort=sequence&size=300`)
         .then((response) => {
           self.sets = response.data.content;
         });

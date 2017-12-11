@@ -19,20 +19,7 @@
                 <li v-bind:class="{ active: activeClass === '/' }"><router-link v-bind:to="'/'" >Home</router-link></li>
                 <li v-bind:class="{ active: activeClass === '/places' }"><router-link v-bind:to="'/places'">Places</router-link></li>
                 <li v-bind:class="{ active: activeClass === '/photos' }"><router-link v-bind:to="'/photos'">Photos</router-link></li>
-                <li><router-link v-bind:to="'/test2'">Test 2</router-link></li>
-                <li><router-link v-bind:to="'/test3'">Test 3</router-link></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><router-link v-bind:to="'/todo-list'">Todo List</router-link></li>
-                    <li><a href="/test">Test</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>
+                <li><a href="http://mcanoy.github.io">Tech Things</a></li>
               </ul>
             </div>
           </div>

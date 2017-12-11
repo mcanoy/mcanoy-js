@@ -5,12 +5,12 @@
     </google-map> -->
 
     <gmap-map style="width: 100%; height: 100%; position: absolute; left:0; top:0"
-        :center="{lat: 34.090698, lng: -118.38600}"
-        :zoom="12">
+        :center="center"
+        :zoom="zoom">
       <gmap-cluster>
-        <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" :content="infoContent" @closeclick="infoWinOpen=false"></gmap-info-window>
-
         <gmap-marker v-for="(m,i) in markers" :key="m.id" :label="firstLetter(m)" :position="{lat: m.latitude, lng: m.longitude}" :clickable="true" :draggable="false" @click="toggleInfoWindow(m,i)" :icon="getIcon(m)"></gmap-marker>
+
+        <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" :content="infoContent" @closeclick="infoWinOpen=false"></gmap-info-window>
       </gmap-cluster>
     </gmap-map>
 
@@ -40,20 +40,22 @@
           lat: 40.7570262523253,
           lng: -73.9853024482727,
         },
+        zoom: 12,
         markers: [],
       };
     },
     mounted() {
       const self = this;
-      if (navigator.geolocation) {
+      if (navigator.geolocation && !this.$route.params.id) {
         navigator.geolocation.getCurrentPosition((position) => {
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
 
-          self.infoWindowPos = { lat, lng };
+          self.center = { lat, lng };
         });
       }
       this.getPlaces();
+      this.routeMarker();
     },
     methods: {
       firstLetter(marker) {
@@ -84,6 +86,18 @@
           // if different marker set infowindow to open and reset current marker index
           self.infoWinOpen = true;
           self.currentMidx = idx;
+        }
+      },
+      routeMarker() {
+        if (this.$route.params.id) {
+          const self = this;
+          const placeId = this.$route.params.id;
+          axios.get(`${process.env.API_URL}/places/search/name?name=${placeId}`)
+          .then((response) => {
+            this.toggleInfoWindow(response.data, -1);
+            self.center = self.infoWindowPos;
+            self.zoom = 25;
+          });
         }
       },
     },
