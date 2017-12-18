@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import * as VueGoogleMaps from 'vue2-google-maps';
+import VueAnalytics from 'vue-analytics';
 
 import App from './App';
 
@@ -37,6 +38,11 @@ const router = new VueRouter({
     { path: '/photos', component: Photos },
     { path: '/test', component: Test },
   ],
+});
+
+Vue.use(VueAnalytics, {
+  id: `${process.env.GOOGLE_ANALYTICS}`,
+  router,
 });
 
 /* eslint-disable no-new */
